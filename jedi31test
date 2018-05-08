@@ -1,0 +1,14 @@
+def x = 10
+
+def add5 = lambda(n) { def x = 5; n + x }
+
+add5(x + 1)
+
+
+def abs = lambda(x) if (x < 0) -1 * x else x
+
+def delta = 100
+
+def isSmall = {def delta = 0.00001; lambda(x) abs(x) < delta}
+
+isSmall(99)
