@@ -239,7 +239,7 @@ object alu {
     if(!args(0).isInstanceOf[Integer] || !args(1).isInstanceOf[Store])
       throw new TypeException("expected signature: get(p: Integer, s: Store)")
     args(1).asInstanceOf[Store].get( args(0).asInstanceOf[Integer])
-    Notification.DONE}
+    }
 
   // map(f: Closure, s: Store) calls s.map(f)
   private def map(args: List[Value]) = {
@@ -268,7 +268,7 @@ object alu {
     if(!args(0).isInstanceOf[Value] || !args(1).isInstanceOf[Store])
       throw new TypeException("expected signature: contains(v: Value, s: Store)")
     args(1).asInstanceOf[Store].contains(args(0).asInstanceOf[Value])
-    Notification.DONE
+
   }
 
   // addLast(v: Value, s: Store) calls s.add(v)
@@ -283,12 +283,9 @@ object alu {
 
   // size(s: Store) calls s.size
   private def size(args: List[Value]) = {
-    if (args.size != 1)
+    if (args.size != 1 || !args(0).isInstanceOf[Store])
       throw new TypeException("expected signature: size(s: Store)")
-    if(!args(0).isInstanceOf[Store])
-      throw new TypeException("expected signature: size(s: Store)")
-    args(0).asInstanceOf[Store].size
-    Notification.DONE
+    else args(0).asInstanceOf[Store].size
   }
 
   // etc.
