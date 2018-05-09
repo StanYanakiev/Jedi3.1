@@ -22,7 +22,7 @@ case class FunCall(val id: Identifier, val ops: List[Expression]) extends Expres
       val maybeClosure = id.execute(env1)
       if (maybeClosure.isInstanceOf[Closure]) {
         val closure = maybeClosure.asInstanceOf[Closure]
-          closure.apply(arguments, env1)
+          closure.apply(arguments)
       }
       else {
         throw new TypeException("only functions can be called")

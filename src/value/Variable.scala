@@ -1,7 +1,7 @@
 package value
 
-class Variable(val content: Value) extends Value{
+class Variable(var content: Value) extends Value{
 
-  override def toString: String = content.toString
+  override def toString: String = "[" + content.toString + "]"
 
 }
